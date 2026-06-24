@@ -58,9 +58,10 @@
     }
 
     /* ── Hero ── */
-    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782292187/deniz-demirci-YFSnhMti2d8-unsplash_ebexi2.jpg') center/cover no-repeat;animation:heroZoom 16s var(--ease) forwards}
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;z-index:0;background:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782292187/taras-chernus-d9KJ5aIx27E-unsplash_kyv3ij.jpg') center/cover no-repeat;animation:heroZoom 16s var(--ease) forwards}
     @media(min-width:768px){
-      .hero{background-image:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782291605/serjan-midili-YT0AdCJ-iHY-unsplash_cinhoo.jpg')}
+      .hero::before{background-image:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782291605/serjan-midili-YT0AdCJ-iHY-unsplash_cinhoo.jpg')}
     }
     .hero__tint{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,4,8,.97) 0%,rgba(10,4,8,.78) 45%,rgba(10,4,8,.55) 100%)}
     .spark{position:absolute;z-index:2;fill:var(--gold);animation:twinkle 3.5s var(--ease) infinite}
@@ -199,6 +200,7 @@
 
     /* ── Keyframes ── */
     @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+    @keyframes heroZoom{0%{transform:scale(1.1)}100%{transform:scale(1)}}
     @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
   </style>
 </head>
@@ -540,7 +542,7 @@
           <label>Why do you want to join? <span style="font-size:.6rem;color:#bba8a8;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
           <textarea id="eMsg" rows="2" placeholder="Tell us a bit about your goal..."></textarea>
         </div>
-        <button class="ef-submit" id="efSubmit">Send Enrollment via WhatsApp</button>
+        <button class="ef-submit" id="efSubmit">Apply Now</button>
       </div>
     </div>
   </section>
