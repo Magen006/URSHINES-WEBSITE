@@ -22,7 +22,7 @@
       --nav-h: 68px;
       --ease:  cubic-bezier(.4,0,.2,1);
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
     html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);scrollbar-width:none}
     html::-webkit-scrollbar{display:none}
     body{font-family:var(--font-body);color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -58,8 +58,11 @@
     }
 
     /* ── Hero ── */
-    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:radial-gradient(ellipse 70% 80% at 25% 70%,rgba(200,160,75,.14) 0%,transparent 60%),radial-gradient(ellipse 90% 90% at 80% 20%,rgba(110,31,51,.5) 0%,transparent 70%),linear-gradient(320deg,var(--wine-dark) 0%,var(--wine-deep) 45%,var(--wine) 100%)}
-    .hero__tint{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(46,10,21,.92) 0%,rgba(46,10,21,.55) 50%,rgba(46,10,21,.3) 100%)}
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782292187/deniz-demirci-YFSnhMti2d8-unsplash_ebexi2.jpg') center/cover no-repeat;animation:heroZoom 16s var(--ease) forwards}
+    @media(min-width:768px){
+      .hero{background-image:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782291605/serjan-midili-YT0AdCJ-iHY-unsplash_cinhoo.jpg')}
+    }
+    .hero__tint{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,4,8,.97) 0%,rgba(10,4,8,.78) 45%,rgba(10,4,8,.55) 100%)}
     .spark{position:absolute;z-index:2;fill:var(--gold);animation:twinkle 3.5s var(--ease) infinite}
     .spark.s1{top:22%;right:12%;width:22px;animation-delay:0s}
     .spark.s2{top:55%;right:28%;width:14px;animation-delay:1.2s}
@@ -537,7 +540,7 @@
           <label>Why do you want to join? <span style="font-size:.6rem;color:#bba8a8;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
           <textarea id="eMsg" rows="2" placeholder="Tell us a bit about your goal..."></textarea>
         </div>
-        <button class="ef-submit" id="efSubmit">Apply Now</button>
+        <button class="ef-submit" id="efSubmit">Send Enrollment via WhatsApp</button>
       </div>
     </div>
   </section>
