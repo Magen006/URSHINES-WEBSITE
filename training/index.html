@@ -177,6 +177,18 @@
     .ef-field input,.ef-field select,.ef-field textarea{width:100%;padding:.78rem 1rem;border:1.5px solid rgba(110,31,51,.14);border-radius:8px;font-family:var(--font-body);font-size:.86rem;color:var(--ink);background:#fff;outline:none;resize:none;appearance:none;transition:border-color .2s,box-shadow .2s}
     .ef-field input:focus,.ef-field select:focus,.ef-field textarea:focus{border-color:var(--wine);box-shadow:0 0 0 3px rgba(110,31,51,.08)}
     .ef-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%236e1f33' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:#fff;padding-right:2.8rem}
+
+    /* ── Enroll custom select ── */
+    .ef-csel{position:relative;user-select:none}
+    .ef-csel__trigger{display:flex;align-items:center;justify-content:space-between;padding:.78rem 1rem;border:1.5px solid rgba(110,31,51,.14);border-radius:8px;background:#fff;cursor:pointer;font-family:var(--font-body);font-size:.86rem;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+    .ef-csel__trigger svg{flex-shrink:0;transition:transform .25s}
+    .ef-csel.open .ef-csel__trigger{border-color:var(--wine);box-shadow:0 0 0 3px rgba(110,31,51,.08)}
+    .ef-csel.open .ef-csel__trigger svg{transform:rotate(180deg)}
+    .ef-csel__drop{position:absolute;top:calc(100% + 5px);left:0;right:0;background:#fff;border:1.5px solid rgba(110,31,51,.14);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100;overflow:hidden}
+    .ef-csel__opt{padding:.8rem 1rem;font-size:.85rem;color:var(--ink);cursor:pointer;transition:background .15s,color .15s;border-bottom:1px solid rgba(110,31,51,.05)}
+    .ef-csel__opt:last-child{border-bottom:none}
+    .ef-csel__opt:hover{background:rgba(110,31,51,.05);color:var(--wine)}
+    .ef-csel__opt.selected{background:rgba(110,31,51,.08);color:var(--wine);font-weight:600}
     .ef-submit{width:100%;padding:1.1rem;background:var(--wine);color:#fff;border:none;border-radius:8px;font-family:var(--font-body);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(110,31,51,.25)}
     .ef-submit:hover{background:var(--wine-deep);transform:translateY(-1px);box-shadow:0 8px 24px rgba(110,31,51,.35)}
     @media(min-width:600px){.ef-row{flex-direction:row}.ef-row>.ef-field{flex:1}}
@@ -530,19 +542,25 @@
           </div>
           <div class="ef-field">
             <label>Experience Level</label>
-            <select id="eExp">
-              <option value="">-- Select --</option>
-              <option value="Complete Beginner">Complete Beginner</option>
-              <option value="Some Experience">Some Experience</option>
-              <option value="Working Professional">Working Professional</option>
-            </select>
+            <div class="ef-csel" id="efCsel">
+              <div class="ef-csel__trigger" id="efCselTrigger">
+                <span id="efCselLabel" style="color:#bba8a8">-- Select level --</span>
+                <svg viewBox="0 0 14 9" width="13" height="8"><path d="M1 1l6 6 6-6" stroke="#6e1f33" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="ef-csel__drop" id="efCselDrop" style="display:none">
+                <div class="ef-csel__opt" data-val="Complete Beginner">&#127807; Complete Beginner</div>
+                <div class="ef-csel__opt" data-val="Some Experience">&#128296; Some Experience</div>
+                <div class="ef-csel__opt" data-val="Working Professional">&#11088; Working Professional</div>
+              </div>
+            </div>
+            <input type="hidden" id="eExp" />
           </div>
         </div>
         <div class="ef-field">
           <label>Why do you want to join? <span style="font-size:.6rem;color:#bba8a8;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
           <textarea id="eMsg" rows="2" placeholder="Tell us a bit about your goal..."></textarea>
         </div>
-        <button class="ef-submit" id="efSubmit">Apply Now</button>
+        <button class="ef-submit" id="efSubmit">Send Enrollment via WhatsApp</button>
       </div>
     </div>
   </section>
@@ -596,8 +614,9 @@
       var msg  = document.getElementById('eMsg').value.trim();
 
       if (!name || !phone || !city || !exp) {
+        if (!exp) { efCselTrigger.style.borderColor='#c0392b'; efCselTrigger.style.boxShadow='0 0 0 3px rgba(192,57,43,.1)'; }
         /* Highlight empty fields */
-        [['eName',name],['ePhone',phone],['eCity',city],['eExp',exp]].forEach(function(pair){
+        [['eName',name],['ePhone',phone],['eCity',city]].forEach(function(pair){
           var el = document.getElementById(pair[0]);
           if (!pair[1]) { el.style.borderColor='#c0392b'; el.style.boxShadow='0 0 0 3px rgba(192,57,43,.1)'; }
           else          { el.style.borderColor=''; el.style.boxShadow=''; }
@@ -620,6 +639,41 @@
       lines.push('Please confirm my enrollment. Thank you!');
 
       window.open('https://wa.me/918248795130?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+    });
+
+    /* ── Experience custom select ── */
+    var efCsel        = document.getElementById('efCsel');
+    var efCselTrigger = document.getElementById('efCselTrigger');
+    var efCselLabel   = document.getElementById('efCselLabel');
+    var efCselDrop    = document.getElementById('efCselDrop');
+    var efExpHidden   = document.getElementById('eExp');
+
+    efCselTrigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = efCsel.classList.contains('open');
+      efCsel.classList.toggle('open', !isOpen);
+      efCselDrop.style.display = isOpen ? 'none' : 'block';
+    });
+
+    efCselDrop.querySelectorAll('.ef-csel__opt').forEach(function(opt) {
+      opt.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var val = opt.getAttribute('data-val');
+        efExpHidden.value = val;
+        efCselLabel.textContent = opt.textContent;
+        efCselLabel.style.color = '';
+        efCselDrop.querySelectorAll('.ef-csel__opt').forEach(function(o){ o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        efCsel.classList.remove('open');
+        efCselDrop.style.display = 'none';
+        /* Clear error highlight */
+        efExpHidden.style.borderColor = '';
+      });
+    });
+
+    document.addEventListener('click', function() {
+      efCsel.classList.remove('open');
+      efCselDrop.style.display = 'none';
     });
   });
   </script>
