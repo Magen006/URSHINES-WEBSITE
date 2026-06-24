@@ -51,13 +51,13 @@
     body.menu-open .nav__burger{opacity:0;pointer-events:none}
 
     /* HERO */
-    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782291146/eugene-chystiakov-5IxZggaz-Qw-unsplash_jitxxj.jpg') center/cover no-repeat;animation:heroZoom 16s var(--ease) forwards}
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;z-index:0;background:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782291146/eugene-chystiakov-5IxZggaz-Qw-unsplash_jitxxj.jpg') center/cover no-repeat;animation:heroZoom 16s var(--ease) forwards}
     @media(min-width:768px){
-      .hero{background-image:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782289766/zulfahmi-khani-9iH_6JO7Ufs-unsplash_hl7pea.jpg')}
+      .hero::before{background-image:url('https://res.cloudinary.com/dmr5kchzw/image/upload/v1782289766/zulfahmi-khani-9iH_6JO7Ufs-unsplash_hl7pea.jpg')}
     }
     .hero__photo{display:none}
-    .hero__tint{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,4,8,.97) 0%,rgba(10,4,8,.78) 45%,rgba(10,4,8,.55) 100%)}
-    .spark{position:absolute;z-index:2;fill:var(--gold);animation:twinkle 3.5s var(--ease) infinite}
+    .hero__tint{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,4,8,.97) 0%,rgba(10,4,8,.78) 45%,rgba(10,4,8,.55) 100%)}    .spark{position:absolute;z-index:2;fill:var(--gold);animation:twinkle 3.5s var(--ease) infinite}
     .spark.s1{top:24%;right:10%;width:20px;animation-delay:0s}
     .spark.s2{top:60%;right:22%;width:13px;animation-delay:1.1s}
     .spark.s3{top:38%;right:5%;width:16px;animation-delay:2s}
