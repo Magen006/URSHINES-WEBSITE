@@ -1312,8 +1312,8 @@
     g('ccal-next').addEventListener('click',function(e){e.stopPropagation();calState.month++;if(calState.month>11){calState.month=0;calState.year++;}renderCalendar();});
 
     /* ── Custom Time Picker ── */
-    var TIME_SLOTS=['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
-    var TIME_VALS= ['07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
+    var TIME_SLOTS=['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+    var TIME_VALS= ['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00'];
     var slotsEl=g('ctime-slots');
     TIME_SLOTS.forEach(function(label,i){
       var slot=document.createElement('div'); slot.className='ctime__slot'; slot.textContent=label;
@@ -1703,9 +1703,8 @@
         <div>
           <div class="contact__hours">
             <p class="contact__hours-title">Working Hours</p>
-            <div class="contact__hours-row"><span class="contact__hours-day">Monday &ndash; Friday</span><span class="contact__hours-time">8:00 AM &ndash; 7:00 PM</span></div>
-            <div class="contact__hours-row"><span class="contact__hours-day">Saturday</span><span class="contact__hours-time">8:00 AM &ndash; 7:00 PM</span></div>
-            <div class="contact__hours-row"><span class="contact__hours-day">Sunday</span><span class="contact__hours-time">9:00 AM &ndash; 5:00 PM</span></div>
+            <div class="contact__hours-row"><span class="contact__hours-day">Monday &ndash; Saturday</span><span class="contact__hours-time">8:00 AM &ndash; 7:00 PM</span></div>
+            <div class="contact__hours-row"><span class="contact__hours-day">Sunday</span><span class="contact__hours-time">10:00 AM &ndash; 6:00 PM</span></div>
           </div>
         </div>
 
