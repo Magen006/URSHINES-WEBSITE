@@ -106,6 +106,14 @@
     .service-card__btn{width:100%;padding:.85rem;background:var(--wine);color:#fff;border:none;border-radius:4px;font-family:var(--font-body);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s;margin-top:auto}
     .service-card__btn:hover{background:var(--wine-deep);transform:translateY(-1px)}
 
+
+    /* ── Service card price table ── */
+    .service-card__prices{margin-bottom:1rem;padding:.75rem;background:var(--off-white);border-radius:8px}
+    .scp-row{display:flex;justify-content:space-between;align-items:center;padding:.3rem 0;font-size:.78rem;border-bottom:1px solid rgba(110,31,51,.06)}
+    .scp-row:last-of-type{border-bottom:none}
+    .scp-row span:first-child{color:var(--muted,#7a6060)}
+    .scp-row span:last-child{font-weight:700;color:var(--wine-dark,#2e0a15)}
+    .scp-note{font-size:.68rem;color:#9a7070;margin-top:.4rem;font-style:italic}
     /* BOOKING MODAL */
     .modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(10,4,8,.65);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
     .modal-overlay.open{opacity:1;pointer-events:all}
@@ -746,6 +754,11 @@
               <li>Wheel &amp; tyre detail</li>
               <li>Interior vacuum</li>
             </ul>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Hatchback</span><span>&#8377;3,000</span></div>
+              <div class="scp-row"><span>Sedan</span><span>&#8377;3,500</span></div>
+              <div class="scp-row"><span>SUV</span><span>&#8377;4,000</span></div>
+            </div>
             <button class="service-card__btn" data-action="book" data-svc="Exterior Decon Wash">Book Now</button>
           </div>
         </div>
@@ -767,6 +780,11 @@
               <li>Glass polish inside &amp; out</li>
               <li>Tyre dressing finish</li>
             </ul>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Hatchback</span><span>&#8377;5,500</span></div>
+              <div class="scp-row"><span>Sedan</span><span>&#8377;6,000</span></div>
+              <div class="scp-row"><span>SUV</span><span>&#8377;6,500</span></div>
+            </div>
             <button class="service-card__btn" data-action="book" data-svc="Full Detail (In and Out)">Book Now</button>
           </div>
         </div>
@@ -777,17 +795,45 @@
             <span class="service-card__badge service-card__badge--gold">Premium</span>
           </div>
           <div class="service-card__body">
-            <h3 class="service-card__title">Ceramic / Graphene Coating</h3>
+            <h3 class="service-card__title">Ceramic Coating</h3>
             <p class="service-card__desc">Long-term paint protection that bonds to your clear coat &mdash; hydrophobic, glossy, and scratch-resistant.</p>
             <ul class="service-card__steps">
               <li>Full exterior decon wash</li>
               <li>Paint decontamination &amp; clay bar</li>
               <li>Paint correction (light polishing)</li>
               <li>IPA wipe-down &mdash; surface prep</li>
-              <li>Ceramic / graphene coating application</li>
+              <li>Ceramic coating application</li>
               <li>Curing &amp; inspection</li>
             </ul>
-            <button class="service-card__btn" data-action="book" data-svc="Ceramic / Graphene Coating">Book Now</button>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Starting from</span><span>&#8377;21,000</span></div>
+              <p class="scp-note">Final price confirmed after vehicle inspection</p>
+            </div>
+            <button class="service-card__btn" data-action="book" data-svc="Ceramic Coating">Book Now</button>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card__img-wrap">
+            <img src="https://res.cloudinary.com/dmr5kchzw/image/upload/v1782202377/fb0dc7b9e48fa9ca97359d73c7e915d4.jpg_zyolnx.jpg" alt="Graphene Coating" loading="lazy" />
+            <span class="service-card__badge service-card__badge--gold">Premium</span>
+          </div>
+          <div class="service-card__body">
+            <h3 class="service-card__title">Graphene Coating</h3>
+            <p class="service-card__desc">The latest in nano-coating technology &mdash; superior heat resistance, deeper gloss and longer lasting protection than ceramic.</p>
+            <ul class="service-card__steps">
+              <li>Full exterior decon wash</li>
+              <li>Paint decontamination &amp; clay bar</li>
+              <li>Paint correction (light polishing)</li>
+              <li>IPA wipe-down &mdash; surface prep</li>
+              <li>Graphene coating application</li>
+              <li>Curing &amp; inspection</li>
+            </ul>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Starting from</span><span>&#8377;30,000</span></div>
+              <p class="scp-note">Final price confirmed after vehicle inspection</p>
+            </div>
+            <button class="service-card__btn" data-action="book" data-svc="Graphene Coating">Book Now</button>
           </div>
         </div>
 
@@ -807,6 +853,10 @@
               <li>IPA wipe-down &amp; paint inspection</li>
               <li>Finishing wax or sealant application</li>
             </ul>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Starting from</span><span>&#8377;8,000</span></div>
+              <p class="scp-note">Price varies by paint condition</p>
+            </div>
             <button class="service-card__btn" data-action="book" data-svc="Paint Correction">Book Now</button>
           </div>
         </div>
@@ -826,7 +876,11 @@
               <li>UV &amp; heat rejection up to 99%</li>
               <li>Final inspection &amp; edges sealed</li>
             </ul>
-            <button class="service-card__btn" data-action="book" data-svc="Sunfilm">Book Now</button>
+            <div class="service-card__prices">
+              <div class="scp-row"><span>Price on request</span><span>Get Quote</span></div>
+              <p class="scp-note">Varies by film grade &amp; vehicle</p>
+            </div>
+            <a href="https://wa.me/918248795130?text=Hi%20UR%20Shines%21%20I%20am%20interested%20in%20Sunfilm%20for%20my%20car.%20Can%20you%20share%20the%20price%20and%20availability%3F%0A%0AVehicle%3A%0APreferred%20Date%3A" target="_blank" rel="noopener" class="service-card__btn" style="text-align:center;display:block;text-decoration:none">Enquire on WhatsApp</a>
           </div>
         </div>
 
@@ -872,7 +926,6 @@
                 <div class="csel__option" data-val="Full Detail (In and Out)">Full Detail (In &amp; Out)</div>
                 <div class="csel__option" data-val="Ceramic / Graphene Coating">Ceramic / Graphene Coating</div>
                 <div class="csel__option" data-val="Paint Correction">Paint Correction</div>
-                <div class="csel__option" data-val="Sunfilm">Sunfilm</div>
               </div>
             </div>
             <input type="hidden" id="bService" />
@@ -979,7 +1032,7 @@
               <div class="summary__row"><span class="summary__lbl">Name</span><span class="summary__val" id="sName">-</span></div>
               <div class="summary__row"><span class="summary__lbl">Phone</span><span class="summary__val" id="sPhone">-</span></div>
               <div class="summary__hr"></div>
-              <div class="summary__row"><span class="summary__lbl">Est. Price</span><span class="summary__val summary__val--gold" id="sPrice">To be confirmed</span></div>
+              <div class="summary__row"><span class="summary__lbl">Price</span><span class="summary__val summary__val--gold" id="sPrice">To be confirmed</span></div>
             </div>
           </div>
           <p class="summary__note">Final price confirmed after vehicle inspection. Tap below to send your booking via WhatsApp.</p>
@@ -1026,13 +1079,19 @@
     var overlay = document.getElementById('modalOverlay');
     var modal   = overlay.querySelector('.modal');
 
-    var PRICES = {
-      'Exterior Decon Wash':        'Starting Rs. 1,499',
-      'Full Detail (In and Out)':   'Starting Rs. 2,999',
-      'Ceramic / Graphene Coating': 'Starting Rs. 8,999',
-      'Paint Correction':           'Starting Rs. 5,999',
-      'Sunfilm':                    'Starting Rs. 3,499'
+    var PRICE_MATRIX = {
+      'Exterior Decon Wash':      { 'Hatchback': 'Rs. 3,000',          'Sedan': 'Rs. 3,500',          'SUV': 'Rs. 4,000'          },
+      'Full Detail (In and Out)': { 'Hatchback': 'Rs. 5,500',          'Sedan': 'Rs. 6,000',          'SUV': 'Rs. 6,500'          },
+      'Ceramic Coating':          { 'Hatchback': 'Starting Rs. 21,000', 'Sedan': 'Starting Rs. 21,000', 'SUV': 'Starting Rs. 21,000', 'default': 'Starting Rs. 21,000' },
+      'Graphene Coating':         { 'Hatchback': 'Starting Rs. 30,000', 'Sedan': 'Starting Rs. 30,000', 'SUV': 'Starting Rs. 30,000', 'default': 'Starting Rs. 30,000' },
+      'Paint Correction':         { 'Hatchback': 'Starting Rs. 8,000',  'Sedan': 'Starting Rs. 8,000',  'SUV': 'Starting Rs. 8,000'  },
+      'Sunfilm':                  { 'Hatchback': 'Price on Request',     'Sedan': 'Price on Request',    'SUV': 'Price on Request',    'default': 'Price on Request' }
     };
+    function getPrice(svc, vsize) {
+      if (PRICE_MATRIX[svc] && vsize && PRICE_MATRIX[svc][vsize]) return PRICE_MATRIX[svc][vsize];
+      if (PRICE_MATRIX[svc]) return Object.values(PRICE_MATRIX[svc])[0];
+      return 'To be confirmed';
+    }
 
     function g(id) { return document.getElementById(id); }
     function v(id) { return g(id).value.trim(); }
@@ -1106,7 +1165,7 @@
       t('sTime',    fmtTime(time));
       t('sName',    name);
       t('sPhone',   phone);
-      t('sPrice',   PRICES[svc] || 'To be confirmed');
+      t('sPrice',   getPrice(svc, vsize));
       hide('stepForm'); show('stepSummary');
       modal.scrollTop = 0;
     };
@@ -1123,6 +1182,8 @@
 
       var lines = [
         'Hi UR Shines Auto Spa! I would like to book an appointment.',
+        '',
+        'Estimated Price: ' + getPrice(svc, vsize),
         '',
         'Booking Details',
         '--------------',
